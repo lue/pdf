@@ -3,7 +3,6 @@ import numpy as np
 import glob
 import matplotlib.pyplot as plt
 
-
 plt.figure(dpi=200, facecolor='w')
 
 for snap in ['130']: # 073', '098', '112', '
@@ -41,3 +40,12 @@ for snap in ['130']: # 073', '098', '112', '
 plt.xlabel('1+\delta')
 plt.legend()
 plt.title('MDPL2 histograms')
+
+d = d.reshape([400,400,400])
+
+for i in range(2):
+    for j in range(2):
+        for k in range(2):
+            print(d[i::2,j::2,k::2].flatten().shape)
+            np.savetxt('output/MDPL2_'+snap+'_all_spheres_'+str(R)+'_'+str(i)+str(j)+str(k)+'_test1.txt', d[i::2,j::2,k::2].flatten(), fmt='%i')        
+            
